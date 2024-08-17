@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UIElements;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class LeaderboardController : MonoBehaviour
 {
@@ -24,13 +25,15 @@ public class LeaderboardController : MonoBehaviour
         SetupHeaderQuestionsButtons();
 
         //Setup header images
-        SetupComponentImage("headerLine", "headerLine");
-        SetupComponentImage("headerBlueBanner", "headerBlueBanner");
+        SetupComponentImage(root, "headerLine", "headerLine");
+        SetupComponentImage(root, "headerBlueBanner", "headerBlueBanner");
 
         //Setup buttons images
         foreach (CustomButton button in buttons) 
-            SetupComponentImage("headerBlueBanner", button.name);
+            SetupComponentImage(button, "defaultButton", button.name);
 
+        //Setup List View image
+        SetupComponentImage(root, "cardsBoard", "leaderboardBackground");
 
     }
 
@@ -65,9 +68,9 @@ public class LeaderboardController : MonoBehaviour
     }
 
 
-    Sprite SetupComponentImage(string spriteName, string parentName = null)
+    Sprite SetupComponentImage(VisualElement parent, string spriteName, string parentName = null)
     {
-        var imageInstance = root.Q<Image>(parentName);
+        var imageInstance = parent.Q<Image>(parentName);
         Sprite sprite = spriteAtlas.GetSprite(spriteName);
 
         if (sprite != null)

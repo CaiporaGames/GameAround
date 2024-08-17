@@ -1,3 +1,4 @@
+/* ROOT */
 .leaderboardRoot
 {
 	display:flex;
@@ -9,16 +10,7 @@
 
 }
 
-.leaderboardContainer
-{
-	display:flex;
-	flex-direction:column;
-	width:100%;
-	height:100%;
-	justify-content:center;
-	align-items:center;
-}
-
+/* HEADER */
 .leaderboardHeader
 {
 	display:flex;
@@ -37,6 +29,7 @@
 {
 	align-items:flex-end;
 }
+
 .headerBlueBanner
 {
 	display:flex;
@@ -45,7 +38,6 @@
 	height:100%;
 	margin:0px;
 	padding:0px;
-
 }
 
 .leaderBoarderLabel 
@@ -58,13 +50,57 @@
 	margin-left:10%;
 }
 
-.leaderboardButtonsContainer
+
+
+/* BODY CONTAINER */
+.leaderboardContainer
 {
+	position:relative;
 	display:flex;
-	flex-direction:row;
+	flex-direction:column;
 	width:100%;
 	height:100%;
+	min-width:100%;
 	justify-content:center;
 	align-items:center;
 }
 
+ .listBody
+{
+	display:flex;
+	flex:1;
+	flex-direction:column;
+	width:100%;
+	height:80%;
+	min-width:100%;
+	justify-content:center;
+	align-items:center;
+}
+
+
+.leaderboardButtonsContainer
+{
+	display:flex;
+	position:absolute;
+	flex-direction:row;
+	width:60%;
+	height:100%;
+	align-items:center;
+	margin:0px;
+	padding:0px;
+	top:-28%;
+}
+
+.leaderboardBackground
+{
+	display:flex;
+	flex:1;
+	width:100%;
+	height:100%;
+	margin:0px;
+	padding:0px;
+	min-width:100%;
+	min-height:100%;
+	top:10%;
+	position:absolute;
+}

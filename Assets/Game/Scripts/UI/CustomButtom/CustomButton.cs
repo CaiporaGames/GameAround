@@ -23,16 +23,10 @@ public class CustomButton : VisualElement
             AddToClassList(additionalButtonClassName);
         }
 
-        // Create a label or any other content for the button
-        var label = new Label(buttonName);
-        label.AddToClassList("custom-button-label");
-        this.Add(label);
     }
 
     private void OnButtonClick(ClickEvent evt)
     {
-        Debug.Log("Button clicked: " + buttonName);
-
         var parent = this.parent;
         if (parent != null)
         {

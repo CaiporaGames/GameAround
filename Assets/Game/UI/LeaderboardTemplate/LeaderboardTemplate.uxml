@@ -16,10 +16,13 @@
 
         <ui:VisualElement name="leaderboardContainer" class="leaderboardContainer">
 
+            <ui:VisualElement name="listBody" class="listBody">
+                <ui:Image name="leaderboardBackground" class="leaderboardBackground" />
+                <ui:ListView name="leaderboardList" class="leaderboardList"/>
+            </ui:VisualElement>
+            
             <ui:VisualElement name="leaderboardButtonsContainer" class="leaderboardButtonsContainer"/>
-
-            <ui:ListView name="leaderboardList" class="leaderboardList"/>
-
+        
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
