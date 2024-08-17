@@ -11,6 +11,9 @@ public class LeaderboardController : MonoBehaviour
     [SerializeField] VisualTreeAsset customButtonTemplate = null;
     [SerializeField] StyleSheet customButtonStyles = null;
 
+    [SerializeField] VisualTreeAsset cardTemplate = null;
+    [SerializeField] StyleSheet cardStyles = null;
+
     // Reference to your Sprite Atlas
     public SpriteAtlas spriteAtlas;
 
