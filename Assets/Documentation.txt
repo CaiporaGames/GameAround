@@ -1,0 +1,18 @@
+8h18
+ - Start the project
+ - Read the project documentation.
+ - Setup the minimal requirements
+	. Android platform
+	. Landscape mode only
+
+8h30 
+	- Setup the project
+		. Create UI Document
+		
+	- Pull Project to Github
+	
+	
+	
+
+Things to add
+ - Final icon as game icon.

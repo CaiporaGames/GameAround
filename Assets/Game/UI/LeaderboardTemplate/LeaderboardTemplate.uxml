@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Game/UI/LeaderboardTemplate/LeaderboardStyles.uss?fileID=7433441132597879392&amp;guid=21b41ac91a928c941947e3c00a7ce449&amp;type=3#LeaderboardStyles" />
+    <ui:VisualElement name="leaderboardRoot" class="leaderboardRoot">
+        <ui:VisualElement name="leaderboardHeader" class="leaderboardHeader">
+            <ui:Image name="headerImage" class="headerImage"/>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="leaderboardContainer" class="leaderboardContainer">
+
+            <ui:VisualElement name="leaderboardButtonsContainer" class="leaderboardButtonsContainer"/>
+
+            <ui:ListView name="leaderboardList" class="leaderboardList"/>
+
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

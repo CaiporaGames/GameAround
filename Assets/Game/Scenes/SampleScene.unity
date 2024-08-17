@@ -436,6 +436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2103929735}
   - component: {fileID: 2103929734}
+  - component: {fileID: 2103929736}
   m_Layer: 5
   m_Name: UIDocument
   m_TagString: Untagged
@@ -457,7 +458,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: f3ca3df0601aeec4e9011bbb32e19944, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 3876f218a56de1b468e29dc72e355f12,
+    type: 3}
   m_SortingOrder: 0
 --- !u!4 &2103929735
 Transform:
@@ -474,6 +476,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2103929736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103929733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd93b8b103834aa458f3bb1cd035cff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  document: {fileID: 2103929734}
+  customButtonTemplate: {fileID: 9197481963319205126, guid: 88bdb89030d74ed438584aa0eb694781,
+    type: 3}
+  customButtonStyles: {fileID: 7433441132597879392, guid: fd82ccf72f6b5ca418ac953532e5a0e5,
+    type: 3}
+  spriteAtlas: {fileID: 0}
+  spriteName: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
