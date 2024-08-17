@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.U2D;
@@ -12,15 +13,25 @@ public class LeaderboardController : MonoBehaviour
     // Reference to your Sprite Atlas
     public SpriteAtlas spriteAtlas;
 
-    // The name of the sprite you want to use from the atlas
-    public string spriteName;
+    List<VisualElement> buttons = new List<VisualElement> ();
 
     VisualElement questionsContent = null;
     VisualElement root = null;
     void Start()
     {
         root = document.rootVisualElement;
+
         SetupHeaderQuestionsButtons();
+
+        //Setup header images
+        SetupComponentImage("headerLine", "headerLine");
+        SetupComponentImage("headerBlueBanner", "headerBlueBanner");
+
+        //Setup buttons images
+        foreach (CustomButton button in buttons) 
+            SetupComponentImage("headerBlueBanner", button.name);
+
+
     }
 
     void SetupHeaderQuestionsButtons()
@@ -29,62 +40,41 @@ public class LeaderboardController : MonoBehaviour
 
         root.styleSheets.Add(customButtonStyles);
 
-        AddCustomButton(buttonsContainer, "Daily", "", true);
-        AddCustomButton(buttonsContainer, "Weekly");
-        AddCustomButton(buttonsContainer, "Monthly");
+        buttons.Add(AddCustomButton(buttonsContainer, "Daily", "", true));
+        buttons.Add(AddCustomButton(buttonsContainer, "Weekly"));
+        buttons.Add(AddCustomButton(buttonsContainer, "Monthly"));
     }
 
-    private void AddCustomButton(VisualElement parent, string buttonName, string className = "",  bool isActive = false)
+    private VisualElement AddCustomButton(VisualElement parent, string buttonName, string className = null, bool isActive = false)
     {
-        var customButtonRoot = customButtonTemplate.CloneTree();
-
         var customButtonInstance = new CustomButton();
+        customButtonInstance.name = buttonName;
         customButtonInstance.SetButtonProperties(buttonName, className);
-
         if (!isActive)
             customButtonInstance.AddAdditionalClass("inactiveButton");
 
-        parent.styleSheets.Add(customButtonStyles);
+        // Apply the template to the custom button
+        customButtonInstance.styleSheets.Add(customButtonStyles);
+        customButtonTemplate.CloneTree(customButtonInstance);
+        customButtonInstance.Q<Image>().name = buttonName;
+        var label = customButtonInstance.Q<Label>("buttonLabelBackground");
+        label.text = buttonName;
+        // Add the stylesheet to the button, not the parent
         parent.Add(customButtonInstance);
+        return customButtonInstance;
     }
 
-    void SetupLeaderboardBackground()
-    {
-        VisualElement leaderboardHeader = root.Q<VisualElement>("leaderboardHeader");
-        var headerImage = leaderboardHeader.Q<Image>("headerImage");
 
-        // Load the sprite from the atlas
+    Sprite SetupComponentImage(string spriteName, string parentName = null)
+    {
+        var imageInstance = root.Q<Image>(parentName);
         Sprite sprite = spriteAtlas.GetSprite(spriteName);
 
-        if (sprite != null && headerImage != null)
-        {
-            // Convert the sprite to a Texture2D
-            Texture2D texture = SpriteToTexture(sprite);
-
-            // Assign the texture to the UI Toolkit Image
-            headerImage.image = texture;
-        }
+        if (sprite != null)
+            imageInstance.sprite = sprite;
         else
-        {
-            Debug.LogError("Sprite or Image component not found.");
-        }
-    }
+            Debug.LogError("Sprite component not found.");
 
-    // Helper method to convert Sprite to Texture2D
-    private Texture2D SpriteToTexture(Sprite sprite)
-    {
-        if (sprite == null)
-            return null;
-
-        Texture2D texture = new Texture2D((int)sprite.rect.width, (int)sprite.rect.height);
-        Color[] pixels = sprite.texture.GetPixels(
-            (int)sprite.textureRect.x,
-            (int)sprite.textureRect.y,
-            (int)sprite.textureRect.width,
-            (int)sprite.textureRect.height
-        );
-        texture.SetPixels(pixels);
-        texture.Apply();
-        return texture;
+        return sprite;
     }
 }

@@ -493,7 +493,8 @@ MonoBehaviour:
     type: 3}
   customButtonStyles: {fileID: 7433441132597879392, guid: fd82ccf72f6b5ca418ac953532e5a0e5,
     type: 3}
-  spriteAtlas: {fileID: 0}
+  spriteAtlas: {fileID: 4343727234628468602, guid: 06163b2afd0d24148a430ba1ca04228d,
+    type: 2}
   spriteName: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

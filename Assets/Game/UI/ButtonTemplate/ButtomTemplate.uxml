@@ -1,8 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Game/UI/ButtonTemplate/ButtomStyles.uss?fileID=7433441132597879392&amp;guid=fd82ccf72f6b5ca418ac953532e5a0e5&amp;type=3#ButtomStyles" />
-    <ui:VisualElement name="buttomRoot" class="buttomRoot">
-        <ui:VisualElement name="buttomContainer" class="buttomContainer">
-            <ui:Image text="Image Name" name="buttomImageBackground" class="buttomImageBackground" />
+    <ui:VisualElement name="buttonRoot" class="buttonRoot">
+        <ui:VisualElement name="buttonContainer" class="buttonContainer">
+            <ui:Image name="buttonImageBackground" class="buttonImageBackground" />
+            <ui:Label name="buttonLabelBackground" class="buttonLabelBackground" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

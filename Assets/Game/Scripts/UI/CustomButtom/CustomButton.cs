@@ -1,19 +1,38 @@
+using UnityEngine;
 using UnityEngine.UIElements;
 
-public class CustomButton : Button
+public class CustomButton : VisualElement
 {
-    public new class UxmlFactory : UxmlFactory<CustomButton, UxmlTraits> { }
-
     public string buttonName = string.Empty;
-    public void SetButtonProperties(string buttomName, string additionalButtomClassName)
+    public CustomButton()
     {
-        name = buttomName;
-        AddToClassList(additionalButtomClassName);
-        RegisterCallback<ClickEvent>(OnButtonClick);
+        // Set default styles or classes
+        AddToClassList("custom-button");
+
+        // Register a click event handler
+        this.RegisterCallback<ClickEvent>(OnButtonClick);
+    }
+
+    public void SetButtonProperties(string buttonName, string additionalButtonClassName = null)
+    {
+        this.buttonName = buttonName;
+
+        // Apply any additional class names
+        if (!string.IsNullOrEmpty(additionalButtonClassName))
+        {
+            AddToClassList(additionalButtonClassName);
+        }
+
+        // Create a label or any other content for the button
+        var label = new Label(buttonName);
+        label.AddToClassList("custom-button-label");
+        this.Add(label);
     }
 
     private void OnButtonClick(ClickEvent evt)
     {
+        Debug.Log("Button clicked: " + buttonName);
+
         var parent = this.parent;
         if (parent != null)
         {
