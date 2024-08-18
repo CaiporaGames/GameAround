@@ -104,3 +104,11 @@
 	top:10%;
 	position:absolute;
 }
+.leaderboardList
+{
+	display:flex;
+	flex-direction:column;
+	width:70%;
+	align-content: space-between;
+	background-color:red;
+}

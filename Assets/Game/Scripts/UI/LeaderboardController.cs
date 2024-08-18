@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using System.Xml.Linq;
 using UnityEngine;
-using UnityEngine.U2D;
 using UnityEngine.UIElements;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class LeaderboardController : MonoBehaviour
 {
@@ -13,14 +10,16 @@ public class LeaderboardController : MonoBehaviour
 
     [SerializeField] VisualTreeAsset cardTemplate = null;
     [SerializeField] StyleSheet cardStyles = null;
+    [SerializeField] SOImageSetup leaderBoardImageSetup = null;
 
     // Reference to your Sprite Atlas
-    public SpriteAtlas spriteAtlas;
 
     List<VisualElement> buttons = new List<VisualElement> ();
 
     VisualElement questionsContent = null;
     VisualElement root = null;
+
+    private List<CardData> cardDataList;
     void Start()
     {
         root = document.rootVisualElement;
@@ -28,16 +27,18 @@ public class LeaderboardController : MonoBehaviour
         SetupHeaderQuestionsButtons();
 
         //Setup header images
-        SetupComponentImage(root, "headerLine", "headerLine");
-        SetupComponentImage(root, "headerBlueBanner", "headerBlueBanner");
+        leaderBoardImageSetup.SetupComponentImage(root, "headerLine", "headerLine");
+        leaderBoardImageSetup.SetupComponentImage(root, "headerBlueBanner", "headerBlueBanner");
 
         //Setup buttons images
-        foreach (CustomButton button in buttons) 
-            SetupComponentImage(button, "defaultButton", button.name);
+        foreach (CustomButton button in buttons)
+            leaderBoardImageSetup.SetupComponentImage(button, "defaultButton", button.name);
 
         //Setup List View image
-        SetupComponentImage(root, "cardsBoard", "leaderboardBackground");
+        leaderBoardImageSetup.SetupComponentImage(root, "cardsBoard", "leaderboardBackground");
 
+        //Add card to list
+        AddCardToLeaderboard("leaderboardList");
     }
 
     void SetupHeaderQuestionsButtons()
@@ -70,17 +71,56 @@ public class LeaderboardController : MonoBehaviour
         return customButtonInstance;
     }
 
-
-    Sprite SetupComponentImage(VisualElement parent, string spriteName, string parentName = null)
+    private void AddCardToLeaderboard(string parentName)
     {
-        var imageInstance = parent.Q<Image>(parentName);
-        Sprite sprite = spriteAtlas.GetSprite(spriteName);
+        cardDataList = new List<CardData>();
 
-        if (sprite != null)
-            imageInstance.sprite = sprite;
-        else
-            Debug.LogError("Sprite component not found.");
+        for (int i = 0; i < 5; i++)
+        {
+            var newCard = new CardData { name = $"New Player {i + 1}", score = Random.Range(0, 100) };
+            cardDataList.Add(newCard);
+        }
 
-        return sprite;
+
+        ListView listView = root.Q<ListView>(parentName);
+        listView.itemsSource = cardDataList;
+
+        if (cardTemplate == null || listView == null)
+        {
+            Debug.LogWarning("Card Template or ListView is not assigned.");
+            return;
+        }
+
+        // Define how to create and bind items in the ListView
+        listView.makeItem = () =>
+        {
+            // Create a new VisualElement using the card template
+            var card = cardTemplate.Instantiate();
+            card.styleSheets.Add(cardStyles);
+            return card;
+        };
+
+        listView.bindItem = (element, index) =>
+        {
+            var cardElement = element as VisualElement;
+
+            // Get the data for this item
+            var cardData = cardDataList[index];
+
+            // Bind the data to the UI elements (assuming you have some labels or fields in your template)
+            var nameLabel = cardElement.Q<Label>("cardPositionValue");
+            nameLabel.text = cardData.name;
+
+            var scoreLabel = cardElement.Q<Label>("cardScore");
+            scoreLabel.text = cardData.score.ToString();
+        };
+
+        // Refresh the ListView to reflect the added item
+        listView.Rebuild();
     }
+}
+public class CardData
+{
+    public string name;
+    public int score;
 }
