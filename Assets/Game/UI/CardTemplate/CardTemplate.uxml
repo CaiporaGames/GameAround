@@ -1,27 +1,23 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Game/UI/CardTemplate/CardStyles.uss?fileID=7433441132597879392&amp;guid=baf44ac2caf714546a5e96681e42c844&amp;type=3#CardStyles" />
-    <ui:VisualElement name="cardTemplateRoot" class="cardTemplateRoot" >
-        <ui:VisualElement name="cardContainer" class="cardContainer" >
-
+    <ui:VisualElement name="cardTemplateRoot" class="cardTemplateRoot">
+        <ui:Image name="cardImage" class="cardImage" style="background-image: url(&quot;project://database/Assets/Game/Sprites/SpriteAtlas-MKUpdate.png?fileID=1212878677&amp;guid=5627013c4e93561429fc015d7aa1082d&amp;type=3#defaultCard&quot;);" />
+        <ui:VisualElement name="cardContainer" class="cardContainer">
             <ui:VisualElement name="content" class="content">
-                <ui:VisualElement name="cardPosition" class="cardPositionContainer" >
+                <ui:VisualElement name="cardPosition" class="cardPositionContainer">
                     <ui:Image name="cardPositionBackground" class="cardPositionBackground" />
                     <ui:Label text="rrrr" name="cardPositionValue" class="cardPositionValue" />
                 </ui:VisualElement>
-
-                <ui:VisualElement name="cardDriver" class="cardDriverContainer" >
+                <ui:VisualElement name="cardDriver" class="cardDriverContainer">
                     <ui:Image name="cardDriverIcon" class="cardDriverIcon" />
                 </ui:VisualElement>
-
-                <ui:VisualElement name="cardDriverName" class="cardDriverNameContainer" >
+                <ui:VisualElement name="cardDriverName" class="cardDriverNameContainer">
                     <ui:Label text="eeee" name="cardDriverName" class="cardDriverName" />
                 </ui:VisualElement>
             </ui:VisualElement>
-
-            <ui:VisualElement name="cardScore" class="cardScoreContainer" >
+            <ui:VisualElement name="cardScore" class="cardScoreContainer">
                 <ui:Label text="aaaa" name="cardScore" class="cardScore" />
             </ui:VisualElement>
-
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

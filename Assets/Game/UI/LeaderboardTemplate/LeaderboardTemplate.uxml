@@ -18,6 +18,18 @@
 
             <ui:VisualElement name="listBody" class="listBody">
                 <ui:Image name="leaderboardBackground" class="leaderboardBackground" />
+               
+                <ui:VisualElement name="titleContainer" class="titleContainer">
+                    <ui:VisualElement name="titleContent" class="titleContent">
+                        <ui:Label text="Position" name="positionTitle" class="positionTitle" />
+                        <ui:Label text="Driver" name="driverTitle" class="driverTitle" />
+                    </ui:VisualElement>
+
+                    <ui:VisualElement name="scoreContent" class="scoreContent">
+                        <ui:Label text="Score" name="scoreTitle" class="scoreTitle" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
                 <ui:ListView name="leaderboardList" class="leaderboardList"/>
             </ui:VisualElement>
             

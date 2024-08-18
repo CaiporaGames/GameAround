@@ -1,6 +1,22 @@
-.cardTemplateRoot, .cardContainer
+/* ROOT */
+.cardTemplateRoot
+{
+	position:relative;
+	display:flex;
+	flex-direction:row;
+	width:100%;
+	height:100%;
+	justify-content:center;
+	align-items:center;
+	border-width: 0;
+    margin: 0px;
+    padding: 0px;
+}
+
+.cardContainer
 {
 	display:flex;
+	flex:1;
 	flex-direction:row;
 	width:100%;
 	height:100%;
@@ -16,14 +32,47 @@
 	display:flex;
 	flex-direction:row;
 	justify-content:flex-start;
-	width:50%;
+	width:100%;
+	height:100%;
 }
+
 
 .cardPositionContainer, .cardDriverContainer, .cardDriverNameContainer
 {
-	padding-left:5%;
+	padding-left:1%;
+	flex:1;
+	height:100%;
+	color:white;
 }
 
+/* CARD POSITION CONTAINTER */
+
+.cardPositionContainer
+{
+	display:flex;
+	position:relative;
+	
+	width:33%;
+}
+
+.cardPositionBackground
+{
+	display:flex;
+	width:100%;
+	height:100%;
+}
+
+.cardPositionValue
+{
+	position:absolute;
+	left:52%;
+	bottom:-5%;
+	color:white;
+	-unity-font-style: bold;
+}
+
+
+/* CARD SCORE CONTAINTER */
 .cardScoreContainer
 {
 	flex:1;
@@ -31,4 +80,15 @@
 	flex-direction:row;
 	justify-content:flex-end;
 	width:50%;
+	flex:1;
+	height:100%;
+	color:white;
+}
+
+.cardImage
+{
+	width:100%;
+	min-width:100%;
+	height:100%;
+	position:absolute;
 }

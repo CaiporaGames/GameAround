@@ -303,6 +303,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: positionBackground
+      rect:
+        serializedVersion: 2
+        x: 1660
+        y: 1295
+        width: 179
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 471a658f06886fe4bbc240722b72171d
+      internalID: -495040271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -322,6 +343,7 @@ TextureImporter:
       defaultCard: 1212878677
       headerBlueBanner: -1736236119
       headerLine: -410459708
+      positionBackground: -495040271
       scrollbar: -633929223
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

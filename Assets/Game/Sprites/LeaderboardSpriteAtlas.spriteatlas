@@ -33,6 +33,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 5627013c4e93561429fc015d7aa1082d, type: 3}
+    - {fileID: 2800000, guid: f191f58da0089a6408b68db178fc23e9, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -44,7 +45,9 @@ SpriteAtlas:
     - 5627013c4e93561429fc015d7aa1082d: -1736236119
     - 5627013c4e93561429fc015d7aa1082d: -410459708
     - 5627013c4e93561429fc015d7aa1082d: 1613137932
+    - 5627013c4e93561429fc015d7aa1082d: -495040271
     - 5627013c4e93561429fc015d7aa1082d: 982907875
+    - f191f58da0089a6408b68db178fc23e9: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 1212878677, guid: 5627013c4e93561429fc015d7aa1082d, type: 3}
@@ -54,7 +57,9 @@ SpriteAtlas:
   - {fileID: -1736236119, guid: 5627013c4e93561429fc015d7aa1082d, type: 3}
   - {fileID: -410459708, guid: 5627013c4e93561429fc015d7aa1082d, type: 3}
   - {fileID: 1613137932, guid: 5627013c4e93561429fc015d7aa1082d, type: 3}
+  - {fileID: -495040271, guid: 5627013c4e93561429fc015d7aa1082d, type: 3}
   - {fileID: 982907875, guid: 5627013c4e93561429fc015d7aa1082d, type: 3}
+  - {fileID: 21300000, guid: f191f58da0089a6408b68db178fc23e9, type: 3}
   m_PackedSpriteNamesToIndex:
   - defaultCard
   - scrollbar
@@ -63,7 +68,9 @@ SpriteAtlas:
   - headerBlueBanner
   - headerLine
   - cardsBoard
+  - positionBackground
   - defaultButton
+  - AppIcon
   m_RenderDataMap: {}
   m_Tag: LeaderboardSpriteAtlas
   m_IsVariant: 0

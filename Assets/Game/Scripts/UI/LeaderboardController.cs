@@ -1,6 +1,11 @@
+using GABackend;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
+using static CustomButton;
+using static GABackend.MKRLeaderboard;
 
 public class LeaderboardController : MonoBehaviour
 {
@@ -11,15 +16,14 @@ public class LeaderboardController : MonoBehaviour
     [SerializeField] VisualTreeAsset cardTemplate = null;
     [SerializeField] StyleSheet cardStyles = null;
     [SerializeField] SOImageSetup leaderBoardImageSetup = null;
-
-    // Reference to your Sprite Atlas
+    [SerializeField] SODatabaseCRUD databaseCRUD = null;
 
     List<VisualElement> buttons = new List<VisualElement> ();
 
     VisualElement questionsContent = null;
     VisualElement root = null;
 
-    private List<CardData> cardDataList;
+
     void Start()
     {
         root = document.rootVisualElement;
@@ -37,8 +41,7 @@ public class LeaderboardController : MonoBehaviour
         //Setup List View image
         leaderBoardImageSetup.SetupComponentImage(root, "cardsBoard", "leaderboardBackground");
 
-        //Add card to list
-        AddCardToLeaderboard("leaderboardList");
+        AddCardToLeaderboard("Daily");
     }
 
     void SetupHeaderQuestionsButtons()
@@ -57,6 +60,7 @@ public class LeaderboardController : MonoBehaviour
         var customButtonInstance = new CustomButton();
         customButtonInstance.name = buttonName;
         customButtonInstance.SetButtonProperties(buttonName, className);
+        CustomButton.buttonClicked += AddCardToLeaderboard;
         if (!isActive)
             customButtonInstance.AddAdditionalClass("inactiveButton");
 
@@ -71,32 +75,64 @@ public class LeaderboardController : MonoBehaviour
         return customButtonInstance;
     }
 
-    private void AddCardToLeaderboard(string parentName)
+    void AddCardToLeaderboard(string buttonName)
     {
-        cardDataList = new List<CardData>();
+        Debug.Log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk: "+ buttonName);
+        List<LeaderBoardItem> cardsData = new List<LeaderBoardItem>();
+        if (buttonName == "Daily")
+            for (int i = 0; i < databaseCRUD.GetTodayDailyLeaderboard().Item1.Count; i++)
+            {
+                LeaderBoardItem card = new LeaderBoardItem();
 
-        for (int i = 0; i < 5; i++)
-        {
-            var newCard = new CardData { name = $"New Player {i + 1}", score = Random.Range(0, 100) };
-            cardDataList.Add(newCard);
-        }
+                card.position = databaseCRUD.GetTodayDailyLeaderboard().Item1[i].position;
+                card.displayName = databaseCRUD.GetTodayDailyLeaderboard().Item1[i].displayName;
+                card.score = databaseCRUD.GetTodayDailyLeaderboard().Item1[i].score;
+                cardsData.Add(card);
+            }
+        else if (buttonName == "Weekly")
+            for (int i = 0; i < databaseCRUD.GetTodayWeeklyLeaderboard().Item1.Count; i++)
+            {
+                LeaderBoardItem card = new LeaderBoardItem();
+                card.position = databaseCRUD.GetTodayWeeklyLeaderboard().Item1[i].position;
+                card.displayName = databaseCRUD.GetTodayWeeklyLeaderboard().Item1[i].displayName;
+                card.score = databaseCRUD.GetTodayWeeklyLeaderboard().Item1[i].score;
+                cardsData.Add(card);
+            }
+        else if (buttonName == "Monthly")
+            for (int i = 0; i < databaseCRUD.GetTodayMonthlyLeaderboard().Item1.Count; i++)
+            {
+                LeaderBoardItem card = new LeaderBoardItem();
 
+                card.position = databaseCRUD.GetTodayMonthlyLeaderboard().Item1[i].position;
+                card.displayName = databaseCRUD.GetTodayMonthlyLeaderboard().Item1[i].displayName;
+                card.score = databaseCRUD.GetTodayMonthlyLeaderboard().Item1[i].score;
+                cardsData.Add(card);
+            }
+        AddCardToLeaderboard("leaderboardList", cardsData);
+    }
 
+    private void AddCardToLeaderboard(string parentName, List<LeaderBoardItem> cardsData)
+    {
         ListView listView = root.Q<ListView>(parentName);
-        listView.itemsSource = cardDataList;
-
         if (cardTemplate == null || listView == null)
         {
             Debug.LogWarning("Card Template or ListView is not assigned.");
             return;
         }
+        listView.Clear();
 
+        listView.itemsSource = cardsData;
         // Define how to create and bind items in the ListView
         listView.makeItem = () =>
         {
             // Create a new VisualElement using the card template
             var card = cardTemplate.Instantiate();
             card.styleSheets.Add(cardStyles);
+
+            leaderBoardImageSetup.SetupComponentImage(card, "defaultCard", "cardImage");
+            leaderBoardImageSetup.SetupComponentImage(card, "positionBackground", "cardPositionBackground");
+            leaderBoardImageSetup.SetupComponentImage(card, "AppIcon", "cardDriverIcon");
+            card.style.flexGrow = 1;
             return card;
         };
 
@@ -105,22 +141,32 @@ public class LeaderboardController : MonoBehaviour
             var cardElement = element as VisualElement;
 
             // Get the data for this item
-            var cardData = cardDataList[index];
+            var cardData = cardsData[index];
 
             // Bind the data to the UI elements (assuming you have some labels or fields in your template)
-            var nameLabel = cardElement.Q<Label>("cardPositionValue");
-            nameLabel.text = cardData.name;
+            var positionLabel = cardElement.Q<Label>("cardPositionValue");
+            positionLabel.text = cardData.position.ToString();
+
+            var nameLabel = cardElement.Q<Label>("cardDriverName");
+            nameLabel.text = cardData.displayName.ToString();
+
 
             var scoreLabel = cardElement.Q<Label>("cardScore");
             scoreLabel.text = cardData.score.ToString();
+
+            cardElement.style.marginBottom = 20;
+            cardElement.style.paddingLeft = 220;
+
+            scoreLabel.text = cardData.score.ToString();
         };
 
+        listView.fixedItemHeight = 90;
         // Refresh the ListView to reflect the added item
         listView.Rebuild();
     }
-}
-public class CardData
-{
-    public string name;
-    public int score;
+
+    private void OnDisable()
+    {
+        CustomButton.buttonClicked -= AddCardToLeaderboard;
+    }
 }
