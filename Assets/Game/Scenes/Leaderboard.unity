@@ -537,13 +537,11 @@ MonoBehaviour:
     type: 3}
   customButtonStyles: {fileID: 7433441132597879392, guid: fd82ccf72f6b5ca418ac953532e5a0e5,
     type: 3}
-  cardTemplate: {fileID: 9197481963319205126, guid: 081d79e0e2623a04b83a97789582b88e,
-    type: 3}
-  cardStyles: {fileID: 7433441132597879392, guid: baf44ac2caf714546a5e96681e42c844,
-    type: 3}
   leaderBoardImageSetup: {fileID: 11400000, guid: eefc8cb8a36ddda44b8e06be07c29d18,
     type: 2}
   databaseCRUD: {fileID: 11400000, guid: 9e9d847681797454cbcb56abb0732d25, type: 2}
+  addCardToLeaderboard: {fileID: 11400000, guid: 01e65b93d1cefab4eba0046eee6527d2,
+    type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

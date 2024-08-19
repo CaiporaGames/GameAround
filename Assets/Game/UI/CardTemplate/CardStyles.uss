@@ -32,45 +32,89 @@
 	display:flex;
 	flex-direction:row;
 	justify-content:flex-start;
-	width:100%;
+	width:50%;
 	height:100%;
 }
 
-
-.cardPositionContainer, .cardDriverContainer, .cardDriverNameContainer
+/* CARD SCORE CONTAINTER */
+.cardImage
 {
-	padding-left:1%;
-	flex:1;
+	width:100%;
+	min-width:100%;
 	height:100%;
-	color:white;
+	position:absolute;
 }
+
 
 /* CARD POSITION CONTAINTER */
 
 .cardPositionContainer
 {
-	display:flex;
+	display:flex;	
+	width:100%;
+	height:100%;
 	position:relative;
-	
-	width:33%;
+	color:white;
+	justify-content:center;
+	align-items:center;
 }
 
 .cardPositionBackground
 {
 	display:flex;
 	width:100%;
-	height:100%;
+	height:70%;
 }
 
 .cardPositionValue
 {
 	position:absolute;
-	left:52%;
-	bottom:-5%;
-	color:white;
+	display:flex;
 	-unity-font-style: bold;
+	left:35%;
+	top:5%;
+	color:white;
+	font-size:400%;
+	padding-left:5%;
 }
 
+/* CARD DRIVER CONTAINTER */
+.cardDriverContainer
+{
+	display:flex;
+	width:100%;
+	height:100%;
+	justify-content:center;
+	align-items:center;
+	color:white;
+}
+
+.cardDriverIcon
+{
+	display:flex;
+	width:80%;
+	height:70%;
+}
+
+/* CARD DRIVER CONTAINTER */
+.cardDriverNameContainer
+{
+	display:flex;
+	width:100%;
+	height:100%;
+	justify-content:center;
+	align-items:center;
+	color:white;
+}
+
+.cardDriverName
+{
+	display:flex;
+	color:white;
+	font-size:200%;
+	-unity-font-style: bold;
+	
+}
 
 /* CARD SCORE CONTAINTER */
 .cardScoreContainer
@@ -79,16 +123,17 @@
 	display:flex;
 	flex-direction:row;
 	justify-content:flex-end;
-	width:50%;
-	flex:1;
+	align-items:center;
+	width:100%;
 	height:100%;
 	color:white;
 }
 
-.cardImage
+.cardScore
 {
-	width:100%;
-	min-width:100%;
-	height:100%;
-	position:absolute;
+	display:flex;
+	color:white;
+	font-size:200%;
+	-unity-font-style: bold;
+	padding-right:5%;
 }

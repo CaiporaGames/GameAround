@@ -1,45 +1,74 @@
 using GABackend;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using static GABackend.MKRLeaderboard;
 
 [CreateAssetMenu(fileName = "Database CRUD", menuName = "Scriptable Objects / database CRUD")]
 public class SODatabaseCRUD : ScriptableObject
 {
-    List<LeaderBoardItem> players = new List<LeaderBoardItem>();
-    string errorMessage = string.Empty;
+    public List<LeaderBoardItem> players { get; private set; } = new List<LeaderBoardItem>();
+    public string errorMessage { get; private set; } = string.Empty;
+    public LeaderBoardItem playerData { get; private set; }
 
-    public Tuple<List<LeaderBoardItem>, string> GetTodayDailyLeaderboard()
+    public async Task<Tuple<List<LeaderBoardItem>, string>> GetTodayDailyLeaderboardAsync()
     {
-        MKRLeaderboard.instance.GetTodayDailyLeaderboard(OnLeaderboardSuccess, OnLeaderboardError);
-        return Tuple.Create(players, errorMessage);
+        var tcs = new TaskCompletionSource<Tuple<List<LeaderBoardItem>, string>>();
+
+        MKRLeaderboard.instance.GetTodayDailyLeaderboard(
+            (leaderboardData) => 
+            {
+                players = new List<LeaderBoardItem>(leaderboardData.leaderboard);
+                playerData = leaderboardData.player;
+                tcs.SetResult(Tuple.Create(players, (string)null));
+            },
+            (error) => 
+            {
+                errorMessage = error;
+                tcs.SetResult(Tuple.Create<List<LeaderBoardItem>, string>(null, error));
+            }
+        );
+        return await tcs.Task;
     }
 
-    public Tuple<List<LeaderBoardItem>, string> GetTodayWeeklyLeaderboard()
+    public async Task<Tuple<List<LeaderBoardItem>, string>> GetTodayWeeklyLeaderboardAsync()
     {
-        MKRLeaderboard.instance.GetTodayWeeklyLeaderboard(OnLeaderboardSuccess, OnLeaderboardError);
-        return Tuple.Create(players, errorMessage);
+        var tcs = new TaskCompletionSource<Tuple<List<LeaderBoardItem>, string>>();
+
+        MKRLeaderboard.instance.GetTodayWeeklyLeaderboard(
+            (leaderboardData) => 
+            {
+                players = new List<LeaderBoardItem>(leaderboardData.leaderboard);
+                playerData = leaderboardData.player;
+                tcs.SetResult(Tuple.Create(players, (string)null));
+            },
+            (error) => 
+            {
+                errorMessage = error;
+                tcs.SetResult(Tuple.Create<List<LeaderBoardItem>, string>(null, error));
+            }
+        );
+        return await tcs.Task;
     }
 
-    public Tuple<List<LeaderBoardItem>, string> GetTodayMonthlyLeaderboard()
+    public async Task<Tuple<List<LeaderBoardItem>, string>> GetTodayMonthlyLeaderboardAsync()
     {
-        MKRLeaderboard.instance.GetTodayMonthlyLeaderboard(OnLeaderboardSuccess, OnLeaderboardError);
-        return Tuple.Create(players, errorMessage);
-    }
+        var tcs = new TaskCompletionSource<Tuple<List<LeaderBoardItem>, string>>();
 
-    void OnLeaderboardSuccess(LeaderBoardData data)
-    {
-        players.Clear();
-        foreach (var item in data.leaderboard)
-            players.Add(item);
-    }
-
-    void OnLeaderboardError(string errorMessage)
-    {
-        errorMessage = string.Empty;
-        players.Clear();
-        Debug.LogError($"Error retrieving leaderboard data: {errorMessage}");
-        errorMessage = errorMessage.Trim();
+        MKRLeaderboard.instance.GetTodayMonthlyLeaderboard(
+            (leaderboardData) => 
+            {
+                players = new List<LeaderBoardItem>(leaderboardData.leaderboard);
+                playerData = leaderboardData.player;
+                tcs.SetResult(Tuple.Create(players, (string)null));
+            },
+            (error) => 
+            {
+                errorMessage = error;
+                tcs.SetResult(Tuple.Create<List<LeaderBoardItem>, string>(null, error));
+            }
+        );
+        return await tcs.Task;
     }
 }

@@ -2,39 +2,29 @@
     <Style src="project://database/Assets/Game/UI/LeaderboardTemplate/LeaderboardStyles.uss?fileID=7433441132597879392&amp;guid=21b41ac91a928c941947e3c00a7ce449&amp;type=3#LeaderboardStyles" />
     <ui:VisualElement name="leaderboardRoot" class="leaderboardRoot">
         <ui:VisualElement name="leaderboardHeader" class="leaderboardHeader">
-
             <ui:VisualElement name="headerRightContainer">
-                <ui:Image name="headerBlueBanner" class="headerBlueBanner"/>
-                <ui:Label text="LEADERBOARD" name="leaderBoarderLabel" class="leaderBoarderLabel"/>
+                <ui:Image name="headerBlueBanner" class="headerBlueBanner" />
+                <ui:Label text="LEADERBOARD" name="leaderBoarderLabel" class="leaderBoarderLabel" />
             </ui:VisualElement>
-
             <ui:VisualElement name="headerLeftContainer">
-                <ui:Image name="headerLine" class="headerLine"/>
+                <ui:Image name="headerLine" class="headerLine" />
             </ui:VisualElement>
-
         </ui:VisualElement>
-
         <ui:VisualElement name="leaderboardContainer" class="leaderboardContainer">
-
             <ui:VisualElement name="listBody" class="listBody">
-                <ui:Image name="leaderboardBackground" class="leaderboardBackground" />
-               
+                <ui:Image name="leaderboardBackground" class="leaderboardBackground" style="background-image: url(&quot;project://database/Assets/Game/Sprites/SpriteAtlas-MKUpdate.png?fileID=1613137932&amp;guid=5627013c4e93561429fc015d7aa1082d&amp;type=3#cardsBoard&quot;);" />
                 <ui:VisualElement name="titleContainer" class="titleContainer">
                     <ui:VisualElement name="titleContent" class="titleContent">
                         <ui:Label text="Position" name="positionTitle" class="positionTitle" />
                         <ui:Label text="Driver" name="driverTitle" class="driverTitle" />
                     </ui:VisualElement>
-
                     <ui:VisualElement name="scoreContent" class="scoreContent">
                         <ui:Label text="Score" name="scoreTitle" class="scoreTitle" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-
-                <ui:ListView name="leaderboardList" class="leaderboardList"/>
+                <ui:ListView name="leaderboardList" class="leaderboardList" />
             </ui:VisualElement>
-            
-            <ui:VisualElement name="leaderboardButtonsContainer" class="leaderboardButtonsContainer"/>
-        
+            <ui:VisualElement name="leaderboardButtonsContainer" class="leaderboardButtonsContainer" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
