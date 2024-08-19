@@ -95,7 +95,7 @@
 	display:flex;
 	flex:1;
 	width:80%;
-	height:90%;
+	height:93%;
 	margin:0px;
 	padding:0px;
 	top:10%;
@@ -117,74 +117,27 @@
 .leaderboardList .unity-scroller--vertical  .unity-scroller__slider 
 {
 	width: 60px;
-	height: 120px;
-	background-color: rgba(0, 0, 0, 0) !important;
+	height: 100%;
     -unity-background-scale-mode: stretch-to-fill;
-	background-image: none !important;
-    -unity-background-image-tint-color: rgba(0, 0, 0, 0) !important;
+	 background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
 }
 
-/* .leaderboardList .unity-scroller__slider .unity-slider__input {
-		width:200px;
-    -unity-background-scale-mode: stretch-to-fill;
-		 --unity-colors-slider-background: red;
-
-} */
-
-/* .unity-scroll-view .unity-scroller--vertical .unity-slider__input {
-    width:200px;
-		 background-color: red;
-    -unity-background-scale-mode: stretch-to-fill;
-		 --unity-colors-slider-background: red;
-}
-
-.unity-scroll-view .unity-scroller--vertical {
-    background-color: red;
-    width: 200px;
-	--unity-colors-slider-background: red;
-}
-
-.leaderboardList .unity-scroller--vertical {
-    background-color: red;
-    width: 200px;
-	--unity-colors-slider-background: red;
-}
-
-.unity-scroll-view .unity-scroller--vertical .unity-base-slider__dragger {
-    background-color: blue;
-} */
 .leaderboardList .unity-scroller--vertical .unity-base-slider__dragger 
 {
     background-color: #51D5FC;
 	width: 60px;
-	height: 120px;
+	height: 60px;
+	opacity: 1 !important;
+	visibility: visible;
 }
-/* .leaderboardList .unity-scroller--vertical .unity-slider__input {
-   width:200px;
-		 background-color: red;
-    -unity-background-scale-mode: stretch-to-fill;
-		 --unity-colors-slider-background: red;
-}
-.unity-scroll-view .unity-scroller--vertical .unity-scroller__slider {
-    	width:200px;
-		 background-color: red;
-    -unity-background-scale-mode: stretch-to-fill;
-		 --unity-colors-slider-background: red;
-} */
+
 /* Upper and lower buttons */
 .leaderboardList .unity-scroller__low-button,
 .leaderboardList .unity-scroller__high-button 
 {
     display: none;
 }
-
-/* Hide the vertical scrollbar track and thumb */
-/* .leaderboardList .unity-slider,
-.leaderboardList .unity-drag-container
-
-{
-    display: none;
-} */
 
 /* TITLE CONTAINER */
 .titleContainer, .titleContent,.scoreContent
@@ -195,7 +148,7 @@
 	width:60%;
 	-unity-font-style: bold;
 	font-size: 120%;
-	top:18%;
+	top:17%;
 }
 
 .titleContent

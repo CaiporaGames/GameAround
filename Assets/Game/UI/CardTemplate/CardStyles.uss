@@ -72,9 +72,9 @@
 	display:flex;
 	-unity-font-style: bold;
 	left:35%;
-	top:5%;
+	top:2%;
 	color:white;
-	font-size:400%;
+	font-size:450%;
 	padding-left:5%;
 }
 
@@ -135,5 +135,5 @@
 	color:white;
 	font-size:200%;
 	-unity-font-style: bold;
-	padding-right:5%;
+	padding-right:8%;
 }

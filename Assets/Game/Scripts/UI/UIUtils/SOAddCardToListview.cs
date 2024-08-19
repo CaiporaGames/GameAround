@@ -75,7 +75,7 @@ public class SOAddCardToListview : ScriptableObject
         };
 
         listView.fixedItemHeight = cardFixedItemHeight;
-        listView.style.height = cardFixedItemHeight * cardsData.Count;
+        listView.style.height = cardFixedItemHeight * cardsData.Count + cardsData.Count * 20;
 
         // Refresh the ListView to reflect the added item
         listView.Rebuild();

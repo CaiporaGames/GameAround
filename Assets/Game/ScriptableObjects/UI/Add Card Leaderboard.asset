@@ -19,6 +19,6 @@ MonoBehaviour:
   leaderBoardImageSetup: {fileID: 11400000, guid: eefc8cb8a36ddda44b8e06be07c29d18,
     type: 2}
   atlas: {fileID: 4343727234628468602, guid: 06163b2afd0d24148a430ba1ca04228d, type: 2}
-  cardMarginBottom: 40
+  cardMarginBottom: 2
   cardPaddingLeft: 220
   cardFixedItemHeight: 90
